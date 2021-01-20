@@ -2,18 +2,44 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>clon-last.fm</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>clon-last.fm</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+  <div class="navigation">
+    <span class="titleNavigation" id="title">last.fm</span>
+  </div>
+  <div class="categories">
+    <div class="category" id="rock">Rock</div>
+    <div class="category" id="hipHop">Hip Hop</div>
+    <div class="category" id="indie">Indie</div>
+    <div class="category" id="jazz">Jazz</div>
+    <div class="category" id="reggae">Reggae</div>
+  </div>
+  <div class="categories2">
+    <ul>
+      <li id="overview">Overview</li>
+      <li id="top10">Top 10 Listened</li>
+      <li id="biggest">The Biggest</li>
+    </ul>
+  </div>
 
-    <script src="script.js"></script>
+  <ul id="showData">
+    <!-- <li class="far fa-play-circle">
+      <a class="group-name" title="Ir al Grupo" href="https://www.last.fm/music/Tame+Impala">Tame Impala</a>
+      <a class="song-title">The Less I Know the Better</a>
+      <div class="listeners">439958</div>
+    </li> -->
+  </ul>
 
+
+
+  <script src="script.js"></script>
 </body>
 
 </html>
