@@ -1,7 +1,8 @@
 class Song {
 
-    constructor(title, group, url, listeners) {
+    constructor(id, title, group, url, listeners) {
         //!Properties
+        this.setId(id);
         this.setSongTitle(title);
         this.setGroupName(group);
         this.setUrl(url);
@@ -11,6 +12,10 @@ class Song {
     }
 
     //! Getters
+    getId() {
+        return this.id;
+    }
+
     getSongTitle() {
         return this.title;
     }
@@ -28,6 +33,10 @@ class Song {
     }
 
     //! Setters
+    setId(id) {
+        this.id = id + '.';
+    }
+
     setSongTitle(title) {
         this.title = title;
     }
@@ -51,7 +60,7 @@ class Song {
         //! Adding the LI item
         const newLi = document.createElement('li');
         newLi.classList.add('far', 'fa-play-circle');
-        newLi.textContent = this.getSongTitle(); //? Get the songTitleData
+        newLi.textContent = this.getId() + this.getSongTitle(); //? Get the songTitleData
 
         //! Adding the first A item
         const newAGroupName = document.createElement('a');
@@ -167,7 +176,15 @@ const loadSongs = () => {
         });
 
         document.getElementById('biggest').addEventListener("click", () => {
-            alert('biggest');
+            if (this.lastEvent != 'biggest') {
+                clearData();
+                const biggest = fetchResponseData
+                    .filter((i, index) => (index < 10))
+                    .sort(function (a, b) { return b.listeners - a.listeners })
+                    .map((item) => { return item });
+                loadOverview(biggest);
+            }
+            lastEvent = 'biggest';
         });
     }
 
@@ -177,9 +194,11 @@ const loadSongs = () => {
     const loadOverview = (fetchResponseData) => {
         /* https://www.samanthaming.com/tidbits/76-converting-object-to-array/ */
         array = Object.values(fetchResponseData);
+        id = 1;
         array.forEach(songItem => {
             const objectArray = Object.entries(array);
-            song = new Song(songItem.name, songItem.artist.name, songItem.url, songItem.listeners);
+            this.id = this.id++;
+            song = new Song(id++, songItem.name, songItem.artist.name, songItem.url, songItem.listeners);
         });
     }
 
@@ -198,3 +217,4 @@ loadSongs();
 
 
 
+// Radiohead
