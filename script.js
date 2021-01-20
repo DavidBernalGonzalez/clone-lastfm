@@ -123,49 +123,55 @@ const loadSongs = () => {
     }
 
     const clearData = () => {
-        const myNode = document.getElementById("showData");
+        const myNode = document.getElementById('showData');
         while (myNode.firstChild) {
             myNode.removeChild(myNode.lastChild);
         }
     }
 
+    const changeTitle = (title) => document.getElementById('titleMusic').innerHTML = title;
+
     const events = () => {
         /* Events */
-        document.getElementById('title').addEventListener("click", () => {
+        document.getElementById('title').addEventListener('click', () => {
             alert('title');
         });
 
-        document.getElementById('rock').addEventListener("click", () => {
+        document.getElementById('rock').addEventListener('click', () => {
             alert('rock');
         });
 
-        document.getElementById('hipHop').addEventListener("click", () => {
+        document.getElementById('hipHop').addEventListener('click', () => {
             alert('hipHop');
         });
 
-        document.getElementById('indie').addEventListener("click", () => {
+        document.getElementById('indie').addEventListener('click', () => {
             alert('indie');
         });
 
-        document.getElementById('jazz').addEventListener("click", () => {
+        document.getElementById('jazz').addEventListener('click', () => {
             alert('jazz');
         });
 
-        document.getElementById('reggae').addEventListener("click", () => {
+        document.getElementById('reggae').addEventListener('click', () => {
             alert('reggae');
+            clearData();
+            changeTitle('Reggae');
         });
 
-        document.getElementById('overview').addEventListener("click", () => {
+        document.getElementById('overview').addEventListener('click', () => {
             if (lastEvent != 'overview') {
                 clearData();
+                changeTitle('Overview');
                 loadOverview(fetchResponseData);
             }
             lastEvent = 'overview';
         });
 
-        document.getElementById('top10').addEventListener("click", () => {
+        document.getElementById('top10').addEventListener('click', () => {
             if (this.lastEvent != 'top10') {
                 clearData();
+                changeTitle('Top 10');
                 const top10 = fetchResponseData
                     .filter((i, index) => (index < 10))
                     .sort(function (a, b) { return b.listeners - a.listeners })
@@ -175,9 +181,10 @@ const loadSongs = () => {
             lastEvent = 'top10';
         });
 
-        document.getElementById('biggest').addEventListener("click", () => {
+        document.getElementById('biggest').addEventListener('click', () => {
             if (this.lastEvent != 'biggest') {
                 clearData();
+                changeTitle('Biggest');
                 const biggest = fetchResponseData
                     .filter((i, index) => (index < 10))
                     .sort(function (a, b) { return b.listeners - a.listeners })
