@@ -118,19 +118,24 @@ body {
       justify-content: space-evenly;
       li {
         display: inline;
-        &:hover{
-            color: #9A2D2E;
+        &:hover {
+          color: #9a2d2e;
         }
       }
     }
   }
 
-  #showData{
+  h1 {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  #showData {
     margin: 3% 10%;
     text-align: center;
-      li {
-        display: flex;
-        justify-content: space-between;
-      }
+    li {
+      display: flex;
+      justify-content: space-between;
     }
+  }
 }

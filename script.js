@@ -134,29 +134,67 @@ const loadSongs = () => {
     const events = () => {
         /* Events */
         document.getElementById('title').addEventListener('click', () => {
-            alert('title');
+            if (lastEvent != 'overview') {
+                clearData();
+                changeTitle('Overview');
+                loadOverview(fetchResponseData);
+            }
+            lastEvent = 'overview';
         });
 
         document.getElementById('rock').addEventListener('click', () => {
-            alert('rock');
+            if (this.lastEvent != 'rock') {
+                clearData();
+                changeTitle('Rock');
+                const rock = fetchResponseData
+                    .filter(song => song.genre === 'rock');
+                loadOverview(rock);
+            }
+            lastEvent = 'rock';
         });
 
         document.getElementById('hipHop').addEventListener('click', () => {
-            alert('hipHop');
+            if (this.lastEvent != 'hipHop') {
+                clearData();
+                changeTitle('HipHop');
+                const hipHop = fetchResponseData
+                    .filter(song => song.genre === 'hip-hop');
+                loadOverview(hipHop);
+            }
+            lastEvent = 'hipHop';
         });
 
         document.getElementById('indie').addEventListener('click', () => {
-            alert('indie');
+            if (this.lastEvent != 'indie') {
+                clearData();
+                changeTitle('Indie');
+                const reggae = fetchResponseData
+                    .filter(song => song.genre === 'indie');
+                loadOverview(reggae);
+            }
+            lastEvent = 'indie';
         });
 
         document.getElementById('jazz').addEventListener('click', () => {
-            alert('jazz');
+            if (this.lastEvent != 'jazz') {
+                clearData();
+                changeTitle('Jazz');
+                const jazz = fetchResponseData
+                    .filter(song => song.genre === 'jazz');
+                loadOverview(jazz);
+            }
+            lastEvent = 'jazz';
         });
 
         document.getElementById('reggae').addEventListener('click', () => {
-            alert('reggae');
-            clearData();
-            changeTitle('Reggae');
+            if (this.lastEvent != 'reggae') {
+                clearData();
+                changeTitle('Reggae');
+                const reggae = fetchResponseData
+                    .filter(song => song.genre === 'reggae');
+                loadOverview(reggae);
+            }
+            lastEvent = 'reggae';
         });
 
         document.getElementById('overview').addEventListener('click', () => {
@@ -172,11 +210,7 @@ const loadSongs = () => {
             if (this.lastEvent != 'top10') {
                 clearData();
                 changeTitle('Top 10');
-                const top10 = fetchResponseData
-                    .filter((i, index) => (index < 10))
-                    .sort(function (a, b) { return b.listeners - a.listeners })
-                    .map((item) => { return item });
-                loadOverview(top10);
+                loadTenListened();
             }
             lastEvent = 'top10';
         });
@@ -190,6 +224,12 @@ const loadSongs = () => {
                     .sort(function (a, b) { return b.listeners - a.listeners })
                     .map((item) => { return item });
                 loadOverview(biggest);
+            }
+            lastEvent = 'biggest';
+            if (this.lastEvent != 'biggest') {
+                clearData();
+                changeTitle('Biggest');
+                loadBiggest('Radiohead');
             }
             lastEvent = 'biggest';
         });
@@ -210,18 +250,20 @@ const loadSongs = () => {
     }
 
     const loadTenListened = () => {
-
+        const top10 = fetchResponseData
+            .filter((i, index) => (index < 10))
+            .sort(function (a, b) { return b.listeners - a.listeners })
+            .map((item) => { return item });
+        loadOverview(top10);
     }
 
     const loadBiggest = (e) => {
-
+        const biggest = fetchResponseData
+            .filter(song => song.artist.name === e);
+        loadOverview(biggest);
     }
 
 }
 
 
 loadSongs();
-
-
-
-// Radiohead

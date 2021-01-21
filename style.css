@@ -145,7 +145,12 @@ body .categories2 ul li {
 }
 
 body .categories2 ul li:hover {
-  color: #9A2D2E;
+  color: #9a2d2e;
+}
+
+body h1 {
+  text-align: center;
+  margin-top: 50px;
 }
 
 body #showData {
